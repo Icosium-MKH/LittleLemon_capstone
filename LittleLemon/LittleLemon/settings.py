@@ -37,9 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'restaurant',
     'rest_framework',
+    'rest_framework.authtoken',
+    'restaurant',
+    'djoser',
+    
 ]
+
+DJOSER={"USER_ID_FIELD":"username"}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,3 +134,13 @@ STATICFILES_DIRS = [
     # Include the app-specific static directory
     os.path.join(BASE_DIR, 'restaurant', 'static'),
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # Other authentication classes if needed
+    ],
+    # Other DRF settings
+}
